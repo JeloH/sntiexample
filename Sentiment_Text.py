@@ -1,49 +1,27 @@
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import csv
+import sys
+
+import pandas
 
 
-text_file = open('data.txt',  encoding='utf-8')
-lines = text_file.read().splitlines()
-print (lines)
+df = pandas.read_csv('alldata.csv', encoding= 'ISO-8859-1')
 
+print(df['comment_text'])
+lines2 = df['comment_text']
+
+sys.stdout=open("output.txt" , "w", encoding='ISO-8859-1')
 
 sid = SentimentIntensityAnalyzer()
-for sentence in lines:
-     print(sentence)
+i = -1
+
+for sentence in lines2:
+     print( '     ' + i.__str__()  + '     ,'+ sentence )
+     i=i+1
      ss = sid.polarity_scores(sentence)
      for k in ss:
-          print('{0}: {1}, '.format(k, ss[k]), end='')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        print( '{0}, {1}, '.format(k, ss[k]), end='')
 
 
 
