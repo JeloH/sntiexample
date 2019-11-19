@@ -6,7 +6,7 @@ import sys
 import pandas
 
 
-df = pandas.read_csv('alldata.csv', encoding= 'ISO-8859-1')
+df = pandas.read_csv('data.csv', encoding= 'ISO-8859-1')
 
 print(df['comment_text'])
 lines2 = df['comment_text']
